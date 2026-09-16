@@ -1,0 +1,614 @@
+
+/* ==================================================
+   CONFIGURAÇÕES GERAIS
+   ================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* ==================================================
+   FUNDO
+   ================================================== */
+
+.background {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+
+    /* Fundo em tons de café */
+
+    background:
+        radial-gradient(
+            circle at top left,
+            #f8dfc0,
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at bottom right,
+            #c89567,
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #f5e3cc,
+            #d8ae82
+        );
+}
+
+
+/* ==================================================
+   CARTÃO
+   ================================================== */
+
+.card {
+
+    width: min(90%, 550px);
+
+    padding: 45px 40px;
+
+    text-align: center;
+
+
+    /* Fundo do cartão */
+
+    background: rgba(
+        255,
+        248,
+        239,
+        0.94
+    );
+
+
+    /* Bordas */
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.8
+    );
+
+
+    /* Sombra */
+
+    box-shadow:
+        0 25px 60px
+        rgba(
+            77,
+            45,
+            24,
+            0.25
+        );
+
+
+    /* Efeito de vidro */
+
+    backdrop-filter: blur(10px);
+
+
+    /* Animação de entrada */
+
+    animation:
+        aparecer 1s ease;
+}
+
+
+/* ==================================================
+   ANIMAÇÃO DE ENTRADA
+   ================================================== */
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.95);
+    }
+
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* ==================================================
+   ÁREA DO CAFÉ
+   ================================================== */
+
+.coffee-area {
+
+    position: relative;
+
+    display: inline-block;
+}
+
+
+/* Xícara */
+
+.cup {
+
+    font-size: 75px;
+
+    filter:
+        drop-shadow(
+            0 8px 8px
+            rgba(80, 45, 20, 0.2)
+        );
+
+
+    animation:
+        flutuar 3s
+        ease-in-out
+        infinite;
+}
+
+
+/* ==================================================
+   VAPOR
+   ================================================== */
+
+.steam {
+
+    position: absolute;
+
+    top: -10px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+
+    display: flex;
+
+    gap: 8px;
+}
+
+
+.steam span {
+
+    width: 4px;
+
+    height: 25px;
+
+    background: #b99578;
+
+    border-radius: 50%;
+
+    opacity: 0.4;
+
+
+    animation:
+        vapor 2s
+        infinite
+        ease-in-out;
+}
+
+
+/* Faz cada vapor começar em momentos diferentes */
+
+.steam span:nth-child(2) {
+
+    animation-delay: 0.4s;
+}
+
+
+.steam span:nth-child(3) {
+
+    animation-delay: 0.8s;
+}
+
+
+/* ==================================================
+   ANIMAÇÃO DA XÍCARA
+   ================================================== */
+
+@keyframes flutuar {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+    }
+
+
+    50% {
+
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+/* ==================================================
+   ANIMAÇÃO DO VAPOR
+   ================================================== */
+
+@keyframes vapor {
+
+    0% {
+
+        transform:
+            translateY(10px);
+
+        opacity: 0;
+    }
+
+
+    50% {
+
+        opacity: 0.5;
+    }
+
+
+    100% {
+
+        transform:
+            translateY(-20px);
+
+        opacity: 0;
+    }
+}
+
+
+/* ==================================================
+   TEXTOS
+   ================================================== */
+
+h1 {
+
+    margin-top: 20px;
+
+    color: #5a321e;
+
+    font-size: 34px;
+}
+
+
+.message {
+
+    margin-top: 20px;
+
+    color: #765846;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+h2 {
+
+    margin: 20px 0;
+
+    color: #7a4528;
+
+    font-size: 27px;
+}
+
+
+.submessage {
+
+    color: #8a6a55;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+
+/* ==================================================
+   BOTÕES
+   ================================================== */
+
+.buttons {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+
+    margin-top: 30px;
+
+
+    /*
+       Criamos uma área para o botão
+       poder fugir dentro dela.
+    */
+
+    min-height: 70px;
+}
+
+
+button {
+
+    border: none;
+
+    border-radius: 15px;
+
+    padding: 13px 22px;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+
+button:hover {
+
+    transform:
+        scale(1.05);
+
+    box-shadow:
+        0 8px 20px
+        rgba(
+            80,
+            45,
+            20,
+            0.18
+        );
+}
+
+
+/* Botão SIM */
+
+#aceitar {
+
+    background: #8b5738;
+
+    color: white;
+}
+
+
+/* Botão NÃO */
+
+#recusar {
+
+    background: #e6c39f;
+
+    color: #5a321e;
+
+    position: relative;
+}
+
+
+/* ==================================================
+   RESPOSTA
+   ================================================== */
+
+#resposta {
+
+    min-height: 25px;
+
+    margin-top: 20px;
+
+    color: #6b3e26;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+}
+
+
+/* ==================================================
+   ELEMENTOS DECORATIVOS
+   ================================================== */
+
+.decoracao {
+
+    position: absolute;
+
+    color:
+        rgba(
+            91,
+            54,
+            31,
+            0.25
+        );
+
+    font-size: 30px;
+
+
+    animation:
+        decoracaoFlutuando
+        5s
+        infinite
+        ease-in-out;
+}
+
+
+.decoracao1 {
+
+    top: 15%;
+
+    left: 15%;
+}
+
+
+.decoracao2 {
+
+    bottom: 20%;
+
+    right: 15%;
+
+    animation-delay: 1s;
+}
+
+
+.decoracao3 {
+
+    top: 25%;
+
+    right: 20%;
+
+    animation-delay: 2s;
+}
+
+
+@keyframes decoracaoFlutuando {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+
+    50% {
+
+        transform:
+            translateY(-15px)
+            rotate(15deg);
+    }
+}
+
+
+/* ==================================================
+   CELULAR
+   ================================================== */
+
+@media (max-width: 600px) {
+
+    .card {
+
+        padding:
+            35px 25px;
+    }
+
+
+    .cup {
+
+        font-size: 60px;
+    }
+
+
+    h1 {
+
+        font-size: 28px;
+    }
+
+
+    h2 {
+
+        font-size: 23px;
+    }
+
+
+    .buttons {
+
+        flex-direction: column;
+
+        min-height: 130px;
+    }
+
+
+    button {
+
+        width: 100%;
+    }
+}
+#imagemCafe {
+    display: none;
+
+    margin-top: 25px;
+
+    animation: aparecerCafe 0.8s ease;
+}
+
+#imagemCafe img {
+    width: 100%;
+    max-width: 400px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(80, 45, 20, 0.25);
+}
+
+@keyframes aparecerCafe {
+
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+#imagemCafe,
+#imagemDerramada {
+    display: none;
+    margin-top: 25px;
+    animation: aparecerCafe 0.8s ease;
+}
+
+#imagemCafe img,
+#imagemDerramada img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(80, 45, 20, 0.25);
+}
+
+@keyframes aparecerCafe {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
